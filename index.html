@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>React</h2>
+        <img src="https://facebook.github.io/react/img/logo_og.png" width="600px" height="350px" />
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## outline
+        <!-- .element: class="fragment" data-fragment-index="1" -->
+        - What is React
+        <!-- .element: class="fragment" data-fragment-index="2" -->
+        - Using React to create user interface
+        <!-- .element: class="fragment" data-fragment-index="3" -->
+        - React connected with Redux in practice
+        <!-- .element: class="fragment" data-fragment-index="4" -->
+        - Test
+      </section>
+      <section>
+        <h2>What is React</h2>
+        <p>A JavaScript Library for building user interfaces</p>
+        <p>The 'V' in MVC</p>
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - Declarative
+        <!-- -->
+        - Component-Based
+        <!-- -->
+        - Virtual DOM
+        <!-- -->
+        - One-way data flow
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## Component
+        <!-- -->
+        - Container component
+        <!-- -->
+        - Presentational component
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - Props
+        <!-- -->
+        - PropTypes
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - State
+        <!-- -->
+        - setState
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - render -- ReactElement
+        <!-- -->
+        - ReactDOM.render
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## React events
+        <p>binding events in React is similar to HTML, using camel-case</p>
+        <p>React normalizes events so that they have consistent properties across different browser</p>
+        <p>below events are triggered by an event in bubbling phase, if want to register event handler for capture phase, instead of using onClick, you should use onClickCapture to handle the click event</p>
+        <!-- -->
+        - With bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements.
+        <!-- -->
+        - With capturing, the event is first captured by the outermost element and propagated to the inner elements.
+
+        <!-- -->
+        ### supported events
+        <!-- -->
+        onKeyDown(HTML-onkeydown), onKeyPress, onKeyUp, onFocus, onBlur, onChange, onInput, onSubmit, onClick, onDrag, onDragEnd, onMouseMove, onMouseDown, onMouseEnter, onMouseLeave, onScroll ... ...
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - Native events - when component mount, through addEventListener to bind event is browser's native events, when using native events, must manually using removeEventListener to remove binding when component unmount
+        <!-- -->
+        - Synthetic events(recommend) - using the way of event delegation add binding to the top layer of component, will destroy binding event automatically when component unmount
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## Operate DOM
+        <!-- -->
+        - findDOMNode from react-dom - component mounted
+        <!-- -->
+        - refs - set a ref property, can use ```this.refs.name``` to access the DOM element tips: will automatically destroy ref reference after component unmount
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        <script type="text/template">
+          ## JSX
+          <code>
+          const HelloWorldComponent = () => (
+          <div>hello world!</div>); ReactDOM.render(
+          <HelloWorldComponnet />, document.getElementsById("root") );
+        </code>
+          <!-- Babel compiled -->
+          ``` const HelloWorldComponent = () => ( React.createElement("div", null, "hello world!"); ); ReactDOM.render( React.createElement(HelloWorldComponent), document.getElementsById("root") ); ```
+        </script>
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        <h2>Mix HTML with JS</h2>
+        <!-- -->
+        - focus on building components, not templates
+        <!-- -->
+        - reduce context switching
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## Component lifeCycle
+        <!-- .element: class="fragment" data-fragment-index="1" -->
+        - componentWillMount
+        <!-- .element: class="fragment" data-fragment-index="2" -->
+        - componentDidMount
+        <!-- .element: class="fragment" data-fragment-index="3" -->
+        - componentDidUpdate
+        <!-- .element: class="fragment" data-fragment-index="4" -->
+        - componentWillReceiveProps
+        <!-- .element: class="fragment" data-fragment-index="5" -->
+        - shouldComponentUpdate
+        <!-- .element: class="fragment" data-fragment-index="6" -->
+        - componentWillUnmount
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## React with Redux
+        <p>Redux can be used with any UI, commonly used with React.</p>
+        <p>react-redux lib provide binding between react and redux</p>
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## react-redux
+        <!-- -->
+        - Provider
+        <!-- -->
+        - Connect
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        ## Test with Enzyme
+        <p>Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.</p>
+      </section>
+      <section data-markdown data-separator="---" data-separator-vertical="--">
+        - shallow
+        <!-- -->
+        - mount
+        <!-- -->
+        - render
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [{
+          src: 'plugin/markdown/marked.js'
+        },
+        {
+          src: 'plugin/markdown/markdown.js'
+        },
+        {
+          src: 'plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad();
+          }
+        }
+      ]
+    });
+  </script>
+</body>
+
+</html>
